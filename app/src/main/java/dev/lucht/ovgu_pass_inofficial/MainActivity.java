@@ -26,10 +26,6 @@ import dev.lucht.ovgu_pass_inofficial.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private WebView ovguPassWebViev;
-
-    private String username = "";
-    private String password = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,55 +39,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        openOvguPass();
-    }
-
-    protected void openOvguPass(){
-        ovguPassWebViev = findViewById(R.id.ovgupass);
-        ovguPassWebViev.loadUrl("https://pass.ovgu.de/");
-        ovguPassWebViev.getSettings().setJavaScriptEnabled(true);
-
-        ovguPassWebViev.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                if ("pass.ovgu.de".equals(request.getUrl().getHost())) {
-                    return false;
-                }
-                else if ("idp-serv.uni-magdeburg.de".equals(request.getUrl().getHost())) {
-                    return false;
-                }
-                return true;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                URI uri = null;
-                try {
-                    uri = new URI(url);
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                if ("idp-serv.uni-magdeburg.de".equals(uri.getHost())) {
-                    //TODO Fill in login information
-                    view.loadUrl("javascript:  document.getElementById('username').value = '" + username + "';" +
-                            " document.getElementById('password').value = '" + password + "';" +
-                            "var z = document.getElementById('submit').click();"
-                    );
-                }
-            }
-        });
-
+        //FloatingActionButton fab = binding.fab;
     }
 
 }
