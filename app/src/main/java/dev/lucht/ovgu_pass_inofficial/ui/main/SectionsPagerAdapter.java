@@ -33,9 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0: // Fragment # 0 - This will show FirstFragment
                 return OvguPassFragment.newInstance(0);
             case 1: // Fragment # 0 - This will show FirstFragment different title
-                return OvguPassFragment.newInstance(1);
-            case 2: // Fragment # 1 - This will show SecondFragment
-                return OvguPassFragment.newInstance(2);
+                return SettingsFragment.newInstance(1);
             default:
                 return null;
         }

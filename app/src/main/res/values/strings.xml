@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">OVGU-Pass inofficial</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Ovgu-Pass anzeigen</string>
+    <string name="tab_text_2">Einstellunegn</string>
 </resources>

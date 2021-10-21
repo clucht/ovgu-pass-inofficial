@@ -26,6 +26,9 @@ import dev.lucht.ovgu_pass_inofficial.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    ViewPager viewPager;
+    TabLayout tabs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +38,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
+        viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
+        tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         //FloatingActionButton fab = binding.fab;
+
+    }
+
+    public void setCurrentTab(int position){
+
+        viewPager.setCurrentItem(position); //your viewpager object
+
     }
 
 }
